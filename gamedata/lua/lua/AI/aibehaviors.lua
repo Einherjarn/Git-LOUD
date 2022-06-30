@@ -191,7 +191,7 @@ function LifeThread( aiBrain, cdr )
     
     local cheatmult = LOUDMAX( 1, aiBrain.CheatValue)
 
-    while false do
+    while true do
     
         WaitTicks(2)
         
