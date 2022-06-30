@@ -310,7 +310,7 @@ BuilderGroup {BuilderGroupName = 'ACU Tasks',
                 
                 MaxRange = 60,
 
-				ThreatMax = 25,
+				ThreatMax = 50,
 				ThreatRings = 0,
                 
 				ThreatType = 'AntiSurface',

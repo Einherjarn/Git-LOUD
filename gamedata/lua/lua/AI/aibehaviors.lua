@@ -191,7 +191,7 @@ function LifeThread( aiBrain, cdr )
     
     local cheatmult = LOUDMAX( 1, aiBrain.CheatValue)
 
-    while true do
+    while false do
     
         WaitTicks(2)
         
@@ -237,14 +237,17 @@ function CDROverCharge( aiBrain, cdr )
 	
 	-- to account for when no shield upgrade installed
 	local shieldPercent = 1	
+	local totalPercent = 0;
 	
 	-- get status of Bobs Shield (if he has one)
 	if cdr:ShieldIsOn() then
-		shieldPercent = (cdr.MyShield:GetHealth() / cdr.MyShield:GetMaxHealth())
+		totalPercent = ((cdr.GetHealth() + cdr.MyShield.GetHealth()) / (cdr.GetMaxHealth() + cdr.MyShield.GetMaxHealth()))
+		else
+		totalPercent = cdr.GetHealthPercent();
 	end
 	
 	-- if Bob is in condition to fight and isn't in distress -- see if there is an alert
-	if cdr:GetHealthPercent() > .74 and shieldPercent > .49 and not aiBrain.CDRDistress then
+	if totalPercent > .74 and not aiBrain.CDRDistress then
 
 		local EM = aiBrain.BuilderManagers.MAIN.EngineerManager
 		
@@ -682,7 +685,7 @@ function CDRReturnHome( aiBrain, cdr, Mult )
 
 	local radius = 80
 	local distance = VDist3(GetPosition(cdr), cdr.CDRHome)
-	
+
     if (not cdr.Dead) and distance > (radius*Mult) then
 		
         local plat = MakePlatoon( aiBrain, 'CDRReturnHome', 'none' )

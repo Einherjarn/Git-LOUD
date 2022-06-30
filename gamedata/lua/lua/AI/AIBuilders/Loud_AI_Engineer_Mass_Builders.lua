@@ -41,8 +41,8 @@ BuilderGroup {BuilderGroupName = 'Engineer Mass Builders',
 				LoopBuild = true,		-- repeat until none in range
                 
                 MaxRange = 250,
-
-				ThreatMax = 50,
+                
+				ThreatMax = 1,
 				ThreatRings = 0,
                 
 				ThreatType = 'AntiSurface',
@@ -86,7 +86,7 @@ BuilderGroup {BuilderGroupName = 'Engineer Mass Builders',
                 MinRange = 150,
                 MaxRange = 750,
                 
-				ThreatMax = 30,
+				ThreatMax = 1,
 				ThreatRings = 0,
 				ThreatType = 'AntiSurface',
                 
@@ -128,7 +128,7 @@ BuilderGroup {BuilderGroupName = 'Engineer Mass Builders',
                 MinRange = 150,
                 MaxRange = 1500,
 
-				ThreatMax = 15,
+				ThreatMax = 1,
 				ThreatRings = 0,
 				ThreatType = 'AntiSurface',
                 
@@ -175,7 +175,7 @@ BuilderGroup {BuilderGroupName = 'Engineer Mass Builders',
                 MinRange = 150,
                 MaxRange = 1500,
 
-				ThreatMax = 15,
+				ThreatMax = 1,
 				ThreatRings = 0,
 				ThreatType = 'AntiSurface',
                 

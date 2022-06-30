@@ -5602,7 +5602,7 @@ Platoon = Class(moho.platoon_methods) {
 		
         local checkinterval = 12	-- every 1.2 seconds
 		
-		local threatcheckthreshold = threatcheck or 6
+		local threatcheckthreshold = threatcheck or 1
 		
 		if not self.MovementLayer then
 			GetMostRestrictiveLayer(self)
@@ -7729,6 +7729,7 @@ Platoon = Class(moho.platoon_methods) {
             local VDist2 = VDist2
 			
 			-- this allows me to specify acceptable threat levels in the engineer task
+			-- EIN_DEV
 			local mythreat = platoon.PlatoonData.Construction.ThreatMax or (__blueprints[eng.BlueprintID].Defense.SurfaceThreatLevel + 10)
 			
 			local viewrange = LOUDMIN(LOUDMAX(10,eng:GetIntelRadius('Vision')), 70) -- between 10 and 70 -- but never 0
@@ -7837,10 +7838,12 @@ Platoon = Class(moho.platoon_methods) {
 				return {location[1], location[3], 0}
 				
 			end
-
-			local function EngineerThreatened( buildlocation )
 			
-				return mythreat <= GetThreatAtPosition( aiBrain, buildlocation, 0, true, 'AntiSurface')
+			local function EngineerThreatened( buildlocation )
+				if(mythreat <= GetThreatAtPosition( aiBrain, buildlocation, 1, true, 'AntiSurface')) then
+					WARN("*AI DEBUG Eng "..repr(eng.Sync.id).." threatened")
+				end
+				return mythreat <= GetThreatAtPosition( aiBrain, buildlocation, 1, true, 'AntiSurface')
 				
 			end		
 
