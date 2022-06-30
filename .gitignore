@@ -34,6 +34,7 @@ lua_utils/bluePrintExtractor/output*.csv
 # IDEs/text editors
 .vscode
 .atomignore
+.vs
 
 # Maps are not tracked by Git
 Map Editor/

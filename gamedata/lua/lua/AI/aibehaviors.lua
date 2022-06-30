@@ -191,7 +191,7 @@ function LifeThread( aiBrain, cdr )
     
     local cheatmult = LOUDMAX( 1, aiBrain.CheatValue)
 
-    while true do
+    while false do
     
         WaitTicks(2)
         
@@ -539,17 +539,18 @@ end
 
 function CDRRunAway( aiBrain, cdr )
 
-	-- used when no shield upgrade is installed
-	local shieldPercent = 0
+	local totalPercent = 0
 
 	-- note: ShieldIsOn will return false if the commander doesn't have a shield or it's off
 	-- this replaced a whole series of specific checks to see if he actually has a shield upgrade
 	if cdr:ShieldIsOn() then
-		shieldPercent = (cdr.MyShield:GetHealth() / cdr.MyShield:GetMaxHealth())
+		totalPercent = ((cdr.GetHealth() + cdr.MyShield.GetHealth()) / (cdr.GetMaxHealth() + cdr.MyShield.GetMaxHealth()))
+	else 
+		totalPercent = cdr.GetHealthPercent()
 	end
 	
 	-- if the CDR is hurt
-    if cdr:GetHealthPercent() < .75 and shieldPercent < .50  then
+    if totalPercent < .75  then
 
 		local GetNumUnitsAroundPoint = GetNumUnitsAroundPoint
 		
